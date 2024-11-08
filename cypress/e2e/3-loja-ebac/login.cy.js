@@ -1,10 +1,14 @@
 /// <reference types="cypress"/>
 
+// usa-se o ../ para retorno de pasta
+const perfil =require('../../fixtures/perfil.json')
+
 describe('Funcionalidade: Login', ()=>{
 
     //comando para rodar antes de cada teste
     beforeEach(() => {
-        cy.visit('http://lojaebac.ebaconline.art.br/minha-conta/')
+        //A baseurl, que é comum para todos fica em cypress.conjig.js
+        cy.visit('minha-conta')
     });
 
     //comando para rodar depois de cada teste
@@ -44,6 +48,24 @@ describe('Funcionalidade: Login', ()=>{
         //Validando se o elemento passa a existir depois do erro
         cy.get('.woocommerce-error > li').should('exist') 
         
+    });
+
+    //teste importando a massa de dados    
+    it('Deve fazer login com sucesso - Usando massa de dados', () => {
+        cy.get('#username').type(perfil.usuario)
+        cy.get('#password').type(perfil.senha)
+        cy.get('.woocommerce-form > .button').click()
+        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain', 'Olá, eduferr (não é eduferr? Sair)')
+    });
+
+    // teste usando direto a fixtures
+    it.only('Deve fazer login com sucesso - Usando Fixtures', () => {
+        cy.fixture('perfil').then(dados => {
+            cy.get('#username').type(dados.usuario)
+            cy.get('#password').type(dados.senha , {log: false}) // para ocultar a senha na execução
+            cy.get('.woocommerce-form > .button').click()
+            cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain', 'Olá, eduferr (não é eduferr? Sair)')
+        })
     });
 
 })
