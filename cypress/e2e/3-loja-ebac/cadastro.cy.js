@@ -4,6 +4,7 @@ import { faker } from '@faker-js/faker';
 describe('Funcionalidade: cadastro', () => {
     
     beforeEach(() => {
+        //A baseurl, que é comum para todos fica em cypress.conjig.js
         cy.visit('minha-conta')
     });
     
@@ -39,6 +40,11 @@ describe('Funcionalidade: cadastro', () => {
         cy.get('#account_last_name').type(sobreNome)
         cy.wait(5000)
         cy.get('.woocommerce-Button').click()
+        cy.get('.woocommerce-message').should('contain','Detalhes da conta modificados com sucesso.')
+    });
+
+    it.only('Deve completar o cadastro com sucesso - usando comando customizado', () => {
+        cy.preCadastro(faker.internet.email(), 'teste@123', faker.person.firstName(), faker.person.lastName())
         cy.get('.woocommerce-message').should('contain','Detalhes da conta modificados com sucesso.')
     });
 });

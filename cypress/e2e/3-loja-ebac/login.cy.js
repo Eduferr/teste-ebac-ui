@@ -59,13 +59,20 @@ describe('Funcionalidade: Login', ()=>{
     });
 
     // teste usando direto a fixtures
-    it.only('Deve fazer login com sucesso - Usando Fixtures', () => {
+    it('Deve fazer login com sucesso - Usando Fixtures', () => {
+        //chamando o método fixture/perfil
+        //then = então -> ações a serem realizadas
         cy.fixture('perfil').then(dados => {
             cy.get('#username').type(dados.usuario)
             cy.get('#password').type(dados.senha , {log: false}) // para ocultar a senha na execução
             cy.get('.woocommerce-form > .button').click()
             cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain', 'Olá, eduferr (não é eduferr? Sair)')
         })
+    });
+
+    it.only('Deve fazer login com sucesso - usando comandos customizados', () => {
+        cy.login('eduferr@teste.com.br', 'teste@123')
+        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain', 'Olá, eduferr (não é eduferr? Sair)')
     });
 
 })

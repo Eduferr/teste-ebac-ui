@@ -2,6 +2,7 @@
 
 describe('Funcionlidade: Produto', () => {
     beforeEach(() => {
+        //A baseurl, que é comum para todos fica em cypress.conjig.js
         cy.visit('produtos')
     });
 
