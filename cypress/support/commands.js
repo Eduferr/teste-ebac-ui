@@ -8,14 +8,11 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 //
-//
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
 //
-//
 // -- This is a dual command --
 // Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
@@ -41,11 +38,9 @@ cy.get('.woocommerce-Button').click()
 })
 
 Cypress.Commands.add('detalhesConta', (nome, sobreNome, usuario) => {
-    cy.get('#account_first_name').clear()
-    cy.get('#account_first_name').type(nome)
-    cy.get('#account_last_name').clear()
-    cy.get('#account_last_name').type(sobreNome)
-    cy.get('#account_display_name').clear()
-    cy.get('#account_display_name').type(usuario)
+    //clear Limpando o campo, para inserir novo valor
+    cy.get('#account_first_name').clear().type(nome)
+    cy.get('#account_last_name').clear().type(sobreNome)
+    cy.get('#account_display_name').clear().type(usuario)
     cy.get('.woocommerce-Button').click()
 })
