@@ -38,12 +38,12 @@ describe('Funcionalidade: cadastro', () => {
         cy.get('.woocommerce-MyAccount-navigation-link--edit-account > a').click()
         cy.get('#account_first_name').type(nome)
         cy.get('#account_last_name').type(sobreNome)
-        cy.wait(5000)
+        //cy.wait(5000)
         cy.get('.woocommerce-Button').click()
         cy.get('.woocommerce-message').should('contain','Detalhes da conta modificados com sucesso.')
     });
 
-    it.only('Deve completar o cadastro com sucesso - usando comando customizado', () => {
+    it('Deve completar o cadastro com sucesso - usando comando customizado', () => {
         cy.preCadastro(faker.internet.email(), 'teste@123', faker.person.firstName(), faker.person.lastName())
         cy.get('.woocommerce-message').should('contain','Detalhes da conta modificados com sucesso.')
     });

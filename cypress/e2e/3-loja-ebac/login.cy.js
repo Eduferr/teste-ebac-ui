@@ -22,7 +22,7 @@ describe('Funcionalidade: Login', ()=>{
         cy.get('#username').type('eduferr@teste.com.br')
         cy.get('#password').type('teste@123')
         cy.get('.woocommerce-form > .button').click()
-        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain', 'Olá, eduferr (não é eduferr? Sair)')
+        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain', 'Olá, Eduardo.qa (não é Eduardo.qa? Sair)')
     })
 
     //Login inválido
@@ -55,7 +55,7 @@ describe('Funcionalidade: Login', ()=>{
         cy.get('#username').type(perfil.usuario)
         cy.get('#password').type(perfil.senha)
         cy.get('.woocommerce-form > .button').click()
-        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain', 'Olá, eduferr (não é eduferr? Sair)')
+        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain', 'Olá, Eduardo.qa (não é Eduardo.qa? Sair)')
     });
 
     // teste usando direto a fixtures
@@ -66,13 +66,13 @@ describe('Funcionalidade: Login', ()=>{
             cy.get('#username').type(dados.usuario)
             cy.get('#password').type(dados.senha , {log: false}) // para ocultar a senha na execução
             cy.get('.woocommerce-form > .button').click()
-            cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain', 'Olá, eduferr (não é eduferr? Sair)')
+            cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain', 'Olá, Eduardo.qa (não é Eduardo.qa? Sair)')
         })
     });
 
-    it.only('Deve fazer login com sucesso - usando comandos customizados', () => {
+    it('Deve fazer login com sucesso - usando comandos customizados', () => {
         cy.login('eduferr@teste.com.br', 'teste@123')
-        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain', 'Olá, eduferr (não é eduferr? Sair)')
+        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain', 'Olá, Eduardo.qa (não é Eduardo.qa? Sair)')
     });
 
 })
