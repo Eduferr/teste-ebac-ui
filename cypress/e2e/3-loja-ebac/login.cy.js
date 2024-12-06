@@ -12,9 +12,9 @@ describe('Funcionalidade: Login', ()=>{
     });
 
     //comando para rodar depois de cada teste
-    afterEach(() => {
-        cy.screenshot()
-    });
+    //afterEach(() => {
+    //    cy.screenshot()
+    //});
 
     //Login válido
     it('Deve fazer login com sucesso', ()=>{
@@ -58,7 +58,7 @@ describe('Funcionalidade: Login', ()=>{
         cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain', 'Olá, Eduardo.qa (não é Eduardo.qa? Sair)')
     });
 
-    // teste usando direto a fixtures
+    // teste usando direto a fixtures de forma nativa
     it('Deve fazer login com sucesso - Usando Fixtures', () => {
         //chamando o método fixture/perfil
         //then = então -> ações a serem realizadas
