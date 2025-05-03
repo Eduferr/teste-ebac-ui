@@ -21,7 +21,7 @@ describe('Funcionalidade: Cadastro', () => {
         cy.get('.woocommerce-message').should('exist')
     });
 
-    it('Realizar cadastro com sucesso - Usando variáveis', () => {
+    it.skip('Realizar cadastro com sucesso - Usando variáveis', () => {
 
         var nome = faker.person.firstName()
         var sobreNome = faker.person.lastName()
@@ -37,6 +37,11 @@ describe('Funcionalidade: Cadastro', () => {
         cy.get('#account_last_name').type(sobreNome)
         //cy.wait(5000) //5 segundos de pausa em tela
         cy.get('.woocommerce-Button').click()
+        cy.get('.woocommerce-message').should('exist')
+    });
+    // Comandos customizados no Support
+    it('Deve completar cadastro com sucesso - Usando comando customizado', () => {
+        cy.preCadastro(faker.internet.email(),"123456",faker.person.firstName(), faker.person.lastName())
         cy.get('.woocommerce-message').should('exist')
     });
 });

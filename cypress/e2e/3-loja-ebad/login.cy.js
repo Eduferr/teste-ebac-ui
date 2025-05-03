@@ -43,13 +43,19 @@ describe('funcionalidade login', () => {
         cy.get('.woocommerce-MyAccount-content > :nth-child(2) > :nth-child(1)').should('contain', 'edu.teste-0551')
     });
     //Usando a fixtures de forma nativa
-    it('Efetuar login com sucesso - Usando fixtures', () => {        
+    it.skip('Efetuar login com sucesso - Usando fixtures', () => {        
         cy.fixture('perfil').then(dados=> {
             cy.get('#username').type(dados.usuario)
             cy.get('#password').type(dados.senha,{log: false})// log: para ocultar dados
             cy.get('.woocommerce-form > .button').click()
             cy.get('.woocommerce-MyAccount-content > :nth-child(2) > :nth-child(1)').should('contain', 'edu.teste-0551')
         })
+    });
+    
+    // Comandos customizados no Support
+    it('Deve fazer login com sucesso - Usando comandos customizados', () => {
+        cy.login('edu.teste@teste.com.br','123456')
+        cy.get('.woocommerce-MyAccount-content > :nth-child(2) > :nth-child(1)').should('contain', 'edu.teste-0551')
     });
 
 });
