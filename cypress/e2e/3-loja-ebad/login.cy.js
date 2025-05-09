@@ -18,7 +18,7 @@ describe('funcionalidade login', () => {
         cy.get('#username').type('edu.teste@teste.com.br')
         cy.get('#password').type(123456)
         cy.get('.woocommerce-form > .button').click()
-        cy.get('.woocommerce-MyAccount-content > :nth-child(2) > :nth-child(1)').should('contain', 'edu.teste-0551')
+        cy.get('.woocommerce-MyAccount-content > :nth-child(2) > :nth-child(1)').should('contain', 'qa_Edu')
     });
     //validar email
     it.skip('Erro de acesso, ao inserir um usuário inválido', () => {
@@ -40,7 +40,7 @@ describe('funcionalidade login', () => {
         cy.get('#username').type(perfil.usuario)
         cy.get('#password').type(perfil.senha,{log: false})// log: para ocultar dados
         cy.get('.woocommerce-form > .button').click()
-        cy.get('.woocommerce-MyAccount-content > :nth-child(2) > :nth-child(1)').should('contain', 'edu.teste-0551')
+        cy.get('.woocommerce-MyAccount-content > :nth-child(2) > :nth-child(1)').should('contain', 'qa_Edu')
     });
     //Usando a fixtures de forma nativa
     it.skip('Efetuar login com sucesso - Usando fixtures', () => {        
@@ -48,14 +48,14 @@ describe('funcionalidade login', () => {
             cy.get('#username').type(dados.usuario)
             cy.get('#password').type(dados.senha,{log: false})// log: para ocultar dados
             cy.get('.woocommerce-form > .button').click()
-            cy.get('.woocommerce-MyAccount-content > :nth-child(2) > :nth-child(1)').should('contain', 'edu.teste-0551')
+            cy.get('.woocommerce-MyAccount-content > :nth-child(2) > :nth-child(1)').should('contain', 'qa_Edu')
         })
     });
     
     // Comandos customizados no Support
     it('Deve fazer login com sucesso - Usando comandos customizados', () => {
         cy.login('edu.teste@teste.com.br','123456')
-        cy.get('.woocommerce-MyAccount-content > :nth-child(2) > :nth-child(1)').should('contain', 'edu.teste-0551')
+        cy.get('.woocommerce-MyAccount-content > :nth-child(2) > :nth-child(1)').should('contain', 'qa_Edu')
     });
 
 });
