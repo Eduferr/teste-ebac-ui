@@ -44,16 +44,17 @@ describe('Funcionalidade: Produtos', () => {
         cy.get('.woocommerce-message').should('contain', quantidade + ' × “' + nomeProduto + '”')
     });
 
-    it.only('Deve adicionar um produto ao carrinho, buscando da Massa de Dados', () => {
+    it('Deve adicionar um produto ao carrinho, buscando da Massa de Dados', () => {
 
         cy.fixture('produtos').then(dados => {
+            let posicaoLista = 0
 
-            produtosPage.buscarProduto(dados[1].nomeProduto)
+            produtosPage.buscarProduto(dados[posicaoLista].nomeProduto)
             produtosPage.addProdutoCarrinho(
-                dados[1].tamanho, 
-                dados[1].cor, 
-                dados[1].quantidade)
-            cy.get('.woocommerce-message').should('contain',dados[1].nomeProduto)
+                dados[posicaoLista].tamanho, 
+                dados[posicaoLista].cor, 
+                dados[posicaoLista].quantidade)
+            cy.get('.woocommerce-message').should('contain',dados[posicaoLista].nomeProduto)
 
         })
 

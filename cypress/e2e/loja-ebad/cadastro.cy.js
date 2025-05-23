@@ -8,7 +8,7 @@ describe('Funcionalidade: Cadastro', () => {
         cy.visit('/minha-conta')
     });
 
-    it.skip('Realizar cadastro com sucesso', () => {
+    it('Realizar cadastro com sucesso', () => {
         cy.get('#reg_email').type(faker.internet.email())
         cy.get('#reg_password').type(123456)
         cy.get(':nth-child(4) > .button').click()
@@ -21,7 +21,7 @@ describe('Funcionalidade: Cadastro', () => {
         cy.get('.woocommerce-message').should('exist')
     });
 
-    it.skip('Realizar cadastro com sucesso - Usando variáveis', () => {
+    it('Realizar cadastro com sucesso - Usando variáveis', () => {
 
         var nome = faker.person.firstName()
         var sobreNome = faker.person.lastName()

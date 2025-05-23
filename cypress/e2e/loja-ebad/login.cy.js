@@ -14,21 +14,21 @@ describe('funcionalidade login', () => {
     });
       
     //cenários de teste
-    it.skip('Fazer login com sucesso', () => {        
+    it('Fazer login com sucesso', () => {        
         cy.get('#username').type('edu.teste@teste.com.br')
         cy.get('#password').type(123456)
         cy.get('.woocommerce-form > .button').click()
         cy.get('.woocommerce-MyAccount-content > :nth-child(2) > :nth-child(1)').should('contain', 'qa_Edu')
     });
     //validar email
-    it.skip('Erro de acesso, ao inserir um usuário inválido', () => {
+    it('Erro de acesso, ao inserir um usuário inválido', () => {
         cy.get('#username').type('eduteste@teste.com.br')
         cy.get('#password').type(123456)
         cy.get('.woocommerce-form > .button').click()
         cy.get('.woocommerce-error > li').should('contain', 'Endereço de e-mail desconhecido')
     });
     //Validar senha
-    it.skip('Erro de acesso, ao inserir senha inválida', () => {
+    it('Erro de acesso, ao inserir senha inválida', () => {
         cy.get('#username').type('edu.teste@teste.com.br')
         cy.get('#password').type(12345)
         cy.get('.woocommerce-form > .button').click()
@@ -36,14 +36,14 @@ describe('funcionalidade login', () => {
     });
     
     // Importando massa de dados
-    it.skip('Efetuar login com sucesso - Usando massa de dados', () => {        
+    it('Efetuar login com sucesso - Usando massa de dados', () => {        
         cy.get('#username').type(perfil.usuario)
         cy.get('#password').type(perfil.senha,{log: false})// log: para ocultar dados
         cy.get('.woocommerce-form > .button').click()
         cy.get('.woocommerce-MyAccount-content > :nth-child(2) > :nth-child(1)').should('contain', 'qa_Edu')
     });
     //Usando a fixtures de forma nativa
-    it.skip('Efetuar login com sucesso - Usando fixtures', () => {        
+    it('Efetuar login com sucesso - Usando fixtures', () => {        
         cy.fixture('perfil').then(dados=> {
             cy.get('#username').type(dados.usuario)
             cy.get('#password').type(dados.senha,{log: false})// log: para ocultar dados
