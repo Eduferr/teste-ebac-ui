@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx cypress run --browser chrome",
+    "test": "npx cypress run",
     "cy:dashBoard" : "npx cypress run --record --key 736b9df5-09da-41f2-8541-6ff482fdecc5"
   },
   "keywords": [],
